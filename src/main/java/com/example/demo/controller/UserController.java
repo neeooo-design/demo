@@ -50,11 +50,11 @@ public class UserController {
     @GetMapping("/page")
     public Result findPage(@RequestParam(defaultValue = "1") Integer pageNum,
                            @RequestParam(defaultValue = "10") Integer pageSize,
-                           @RequestParam(defaultValue = "")String name){
-        LambdaQueryWrapper<User> LambdaQueryWrapper=new LambdaQueryWrapper<>();
-        if(!"".equals(name)&&name!=null){
-            LambdaQueryWrapper.like(User::getName,name);
+                           @RequestParam(defaultValue = "") String name) {
+        LambdaQueryWrapper<User> LambdaQueryWrapper = new LambdaQueryWrapper<>();
+        if (!"".equals(name) && name != null) {
+            LambdaQueryWrapper.like(User::getName, name);
         }
-        return Result.success(userService.page(new Page<User>(pageNum,pageSize),LambdaQueryWrapper));
+        return Result.success(userService.page(new Page<User>(pageNum, pageSize), LambdaQueryWrapper));
     }
 }
